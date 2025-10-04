@@ -14,8 +14,8 @@ export interface IApartment extends Document {
 
 const ApartmentSchema = new Schema<IApartment>(
   {
-    unitName: { type: String, required: true },
-    unitNumber: { type: String, required: true },
+    unitName: { type: String, required: true, unique: true },
+    unitNumber: { type: String, required: true, unique: true },
     project: { type: String, required: true },
     price: { type: Number, required: true },
     rooms: { type: Number, required: true },

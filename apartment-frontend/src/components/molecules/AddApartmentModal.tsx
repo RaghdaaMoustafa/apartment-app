@@ -193,17 +193,13 @@ export default function AddApartmentModal({
           </div>
 
           <div>
-            <FormLabel htmlFor="images" name="Images" />
-            <input
-              id="images"
+            <FormLabel htmlFor="images" name="Images" required/>
+            <Input
               name="images"
               type="file"
               multiple
               accept="image/*"
               onChange={handleFileChange}
-              className="border rounded px-2 py-1"
-              title="Select images to upload"
-              placeholder="Select images"
               required
             />
             {images.length > 0 && (
