@@ -152,7 +152,6 @@ docker-compose down
 # Using Docker
 docker run -d -p 27017:27017 --name apartment-mongo mongo:6
 
-# Or install MongoDB locally
 ```
 
 #### 2. Backend Setup
@@ -165,9 +164,6 @@ npm install
 # Run in development mode
 npm run dev
 
-# Or build and run production
-npm run build
-npm start
 ```
 
 #### 3. Frontend Setup
@@ -180,9 +176,6 @@ npm install
 # Run in development mode
 npm run dev
 
-# Or build and run production
-npm run build
-npm start
 ```
 
 ## Backend Documentation
