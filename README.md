@@ -13,7 +13,7 @@ A full-stack apartment listing application built with Node.js/Express backend an
 - [Frontend Documentation](#frontend-documentation)
 - [API Documentation](#api-documentation)
 - [Docker Setup](#docker-setup)
--[Getting Started] (#getting-started)
+- [Getting Started](#getting-started)
 
 ## Tech Stack
 
