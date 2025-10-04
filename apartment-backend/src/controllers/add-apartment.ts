@@ -2,32 +2,33 @@ import { Request, Response } from "express";
 import Apartment from "../models/apartment.model";
 import supabase from "../utils/supabase-client";
 
-
-
 export const addApartment = async (req: Request, res: Response) => {
   try {
-    const { unitName, unitNumber, project, price, rooms, location, available } =
+    const { unitName, unitNumber, project, price, rooms, location, available,description } =
       req.body;
-    const file = req.file;
-    console.log('body:', req.body);
-    
 
-    let imageUrl: string | null = null;
+    const files = req.files as Express.Multer.File[];
+    console.log("body:", req.body);
+    console.log("files:", files?.length);
 
-    if (file) {
-      const { data, error } = await supabase.storage
-        .from("apartments")
-        .upload(`apartments/${Date.now()}-${file.originalname}`, file.buffer, {
-          contentType: file.mimetype,
-        });
+    let imageUrls: string[] = [];
 
-      if (error) throw error;
+    if (files && files.length > 0) {
+      for (const file of files) {
+        const { data, error } = await supabase.storage
+          .from("apartments")
+          .upload(`apartments/${Date.now()}-${file.originalname}`, file.buffer, {
+            contentType: file.mimetype,
+          });
 
-      const { data: publicUrl } = supabase.storage
-        .from("apartments")
-        .getPublicUrl(data.path);
+        if (error) throw error;
 
-      imageUrl = publicUrl.publicUrl;
+        const { data: publicUrl } = supabase.storage
+          .from("apartments")
+          .getPublicUrl(data.path);
+
+        imageUrls.push(publicUrl.publicUrl);
+      }
     }
 
     const apartment = new Apartment({
@@ -38,14 +39,15 @@ export const addApartment = async (req: Request, res: Response) => {
       rooms,
       location,
       available,
-      images: imageUrl ? [imageUrl] : [],
+      description,
+      images: imageUrls,
     });
 
     await apartment.save();
 
     res.status(201).json(apartment);
   } catch (err) {
+    console.error(err);
     res.status(500).json({ error: (err as Error).message });
   }
 };
-

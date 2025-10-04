@@ -1,3 +1,4 @@
+
 export const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000";
 
 export async function fetchApartments(search?: string) {
@@ -13,6 +14,8 @@ export async function fetchApartmentById(id: string) {
 }
 
 export async function addApartment(formData: FormData) {
+    console.log("Adding apartment with data:", Array.from(formData.entries()));
+    
   const res = await fetch(`${API_URL}/api/apartments`, {
     method: "POST",
     body: formData,

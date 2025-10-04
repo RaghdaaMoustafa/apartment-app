@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 
 type TSearchBarProps = {
   onSearch: (query: string) => void;
-}
+};
 
 export default function SearchBar({ onSearch }: TSearchBarProps) {
   const [query, setQuery] = useState("");
@@ -23,7 +23,12 @@ export default function SearchBar({ onSearch }: TSearchBarProps) {
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       />
-      <Button onClick={handleSearch}>Search</Button>
+      <Button
+        onClick={handleSearch}
+        className="flex items-center gap-2 bg-blue-900 hover:bg-blue-800 text-white font-medium px-4 py-2 rounded-full"
+      >
+        Search
+      </Button>
     </div>
   );
 }

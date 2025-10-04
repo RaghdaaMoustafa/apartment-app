@@ -1,17 +1,13 @@
-import Image from "next/image";
+/* eslint-disable @next/next/no-img-element */
 
 export default function Header() {
   return (
     <header className="relative w-full h-[50vh] md:h-[70vh] lg:h-[80vh] flex items-center justify-center text-center text-white">
-      <Image
-        src="/cropped.jpeg"
+      <img
+        src="/realestate.jpg"
         alt="Apartments Background"
-        fill
-        className="object-cover"
-        priority
-        quality={100}
+        className="absolute inset-0 w-full h-full object-cover object-[center_100%]"
       />
-
       <div className="absolute inset-0 bg-black/20" />
 
       <div className="relative z-10 px-4">

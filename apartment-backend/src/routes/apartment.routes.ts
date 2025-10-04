@@ -8,6 +8,6 @@ const router = Router();
 
 router.get("/", listApartments);
 router.get("/:id", getApartment);
-router.post("/", upload.single("image"),addApartment);
+router.post("/", upload.array("images"), addApartment);
 
 export default router;
