@@ -1,0 +1,27 @@
+# 
+services:
+  mongo:
+    image: mongo:6
+    container_name: apartment-mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+  backend:
+    build: ./apartment-backend
+    container_name: apartment-backend
+    command: npm run dev
+    volumes:
+      - ./apartment-backend:/app
+      - /app/node_modules
+    ports:
+      - "5000:5000"
+    env_file:   # 👈 tell docker-compose to load your .env
+      - ./apartment-backend/.env
+    depends_on:
+      - mongo
+
+volumes:
+  mongo-data:
+
