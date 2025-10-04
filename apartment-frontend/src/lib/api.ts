@@ -6,7 +6,7 @@ export async function fetchApartments(search?: string) {
   return res.json();
 }
 
-export async function fetchApartment(id: string) {
+export async function fetchApartmentById(id: string) {
   const res = await fetch(`${API_URL}/api/apartments/${id}`);
   if (!res.ok) throw new Error("Failed to fetch apartment");
   return res.json();

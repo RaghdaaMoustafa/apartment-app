@@ -46,12 +46,10 @@ export default function ApartmentList() {
 
   return (
     <div className="container mx-auto p-4">
-      {/* Search bar */}
       <div className="mb-6">
         <SearchBar onSearch={handleSearch} />
       </div>
 
-      {/* Apartments grid */}
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {filtered.length > 0 ? (
           filtered.map((apt) => (

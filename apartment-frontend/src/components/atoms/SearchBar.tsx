@@ -4,11 +4,11 @@ import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
-interface SearchBarProps {
+type TSearchBarProps = {
   onSearch: (query: string) => void;
 }
 
-export default function SearchBar({ onSearch }: SearchBarProps) {
+export default function SearchBar({ onSearch }: TSearchBarProps) {
   const [query, setQuery] = useState("");
 
   const handleSearch = () => {
