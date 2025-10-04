@@ -14,6 +14,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { addApartment } from "@/lib/api";
 import { TApartment } from "@/types";
+import { FormLabel } from "../atoms/FormLabel";
 
 type FormState = {
   unitName: string;
@@ -104,7 +105,7 @@ export default function AddApartmentModal({
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <Label htmlFor="unitName">Unit Name</Label>
+            <FormLabel htmlFor="unitName" name="Unit Name" required />
             <Input
               name="unitName"
               value={form.unitName}
@@ -114,7 +115,7 @@ export default function AddApartmentModal({
           </div>
 
           <div>
-            <Label htmlFor="unitNumber">Unit Number</Label>
+            <FormLabel htmlFor="unitNumber" name="Unit Number" required />
             <Input
               name="unitNumber"
               value={form.unitNumber}
@@ -124,7 +125,7 @@ export default function AddApartmentModal({
           </div>
 
           <div>
-            <Label htmlFor="project">Project</Label>
+            <FormLabel htmlFor="project" name="Project" required />
             <Input
               name="project"
               value={form.project}
@@ -134,7 +135,7 @@ export default function AddApartmentModal({
           </div>
 
           <div>
-            <Label htmlFor="price">Price</Label>
+            <FormLabel htmlFor="price" name="Price" required />
             <Input
               name="price"
               type="number"
@@ -145,30 +146,33 @@ export default function AddApartmentModal({
           </div>
 
           <div>
-            <Label htmlFor="location">Location</Label>
+            <FormLabel htmlFor="location" name="Location" required />
             <Input
               name="location"
               value={form.location}
               onChange={handleChange}
+              required
             />
           </div>
 
           <div>
-            <Label htmlFor="rooms">Rooms</Label>
+            <FormLabel htmlFor="rooms" name="Rooms" required />
             <Input
               name="rooms"
               type="number"
               value={form.rooms}
               onChange={handleChange}
+              required
             />
           </div>
 
           <div>
-            <Label htmlFor="description">Description</Label>
+            <FormLabel htmlFor="description" name="Description" required />
             <Textarea
               name="description"
               value={form.description}
               onChange={handleChange}
+              required
             />
           </div>
 
@@ -189,7 +193,7 @@ export default function AddApartmentModal({
           </div>
 
           <div>
-            <Label htmlFor="images">Images</Label>
+            <FormLabel htmlFor="images" name="Images" />
             <input
               id="images"
               name="images"
@@ -200,6 +204,7 @@ export default function AddApartmentModal({
               className="border rounded px-2 py-1"
               title="Select images to upload"
               placeholder="Select images"
+              required
             />
             {images.length > 0 && (
               <div className="flex gap-2 mt-2 flex-wrap">

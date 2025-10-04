@@ -21,7 +21,7 @@ const ApartmentSchema = new Schema<IApartment>(
     rooms: { type: Number, required: true },
     location: { type: String, required: true },
     available: { type: Boolean, default: true }, // default is available
-    description: { type: String },
+    description: { type: String, required: true },
     images: { type: [String], default: [] },
   },
   {

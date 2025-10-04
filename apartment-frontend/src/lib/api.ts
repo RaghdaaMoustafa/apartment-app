@@ -14,7 +14,6 @@ export async function fetchApartmentById(id: string) {
 }
 
 export async function addApartment(formData: FormData) {
-    console.log("Adding apartment with data:", Array.from(formData.entries()));
     
   const res = await fetch(`${API_URL}/api/apartments`, {
     method: "POST",

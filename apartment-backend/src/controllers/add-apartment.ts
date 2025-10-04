@@ -8,8 +8,7 @@ export const addApartment = async (req: Request, res: Response) => {
       req.body;
 
     const files = req.files as Express.Multer.File[];
-    console.log("body:", req.body);
-    console.log("files:", files?.length);
+
 
     let imageUrls: string[] = [];
 
