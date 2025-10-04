@@ -8,7 +8,8 @@ export interface IApartment extends Document {
   rooms: number;
   location: string;
   available: boolean;
-  images: string[]; // array of image URLs
+  description: String;
+  images: string[]; 
 }
 
 const ApartmentSchema = new Schema<IApartment>(
@@ -20,10 +21,11 @@ const ApartmentSchema = new Schema<IApartment>(
     rooms: { type: Number, required: true },
     location: { type: String, required: true },
     available: { type: Boolean, default: true }, // default is available
-    images: { type: [String], default: [] } // store multiple URLs
+    description: { type: String },
+    images: { type: [String], default: [] },
   },
   {
-    timestamps: true // auto add createdAt & updatedAt
+    timestamps: true, // auto add createdAt & updatedAt
   }
 );
 

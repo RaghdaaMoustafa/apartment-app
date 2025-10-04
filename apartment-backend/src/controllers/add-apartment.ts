@@ -1,15 +1,3 @@
-// import { Request, Response } from "express";
-// import Apartment from "../models/apartment.model";
-// export const addApartment = async (req: Request, res: Response) => {
-//   try {
-//     const apartment = new Apartment(req.body);
-//     await apartment.save();
-//     res.status(201).json(apartment);
-//   } catch (err) {
-//     res.status(400).json({ error: "Failed to add apartment" });
-//   }
-// };
-
 import { Request, Response } from "express";
 import Apartment from "../models/apartment.model";
 import supabase from "../utils/supabase-client";
