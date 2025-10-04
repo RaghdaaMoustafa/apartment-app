@@ -20,6 +20,19 @@ services:
       - ./apartment-backend/.env
     depends_on:
       - mongo
+  frontend:
+    build: ./apartment-frontend
+    container_name: apartment-frontend
+    command: npm run dev
+    volumes:
+      - ./apartment-frontend:/app
+      - /app/node_modules
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./apartment-frontend/.env.local
+    depends_on:
+      - backend
 
 volumes:
   mongo-data:
