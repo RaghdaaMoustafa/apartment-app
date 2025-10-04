@@ -102,17 +102,13 @@ apartment-app/
 Create `apartment-backend/.env` file:
 
 ```env
-# Database
-MONGODB_URI=mongodb://localhost:27017/apartment-app
-# For Docker: mongodb://mongo:27017/apartment-app
-
-# Server
+MONGO_URI=mongodb://mongo:27017/apartment-app
 PORT=5000
 
-# Supabase Configuration
+# Supabase configuration (used for image storage)
 SUPABASE_URL=https://lwloxdhwirdiiwbbdljh.supabase.co
 SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx3bG94ZGh3aXJkaWl3YmJkbGpoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTk0NzM0NTAsImV4cCI6MjA3NTA0OTQ1MH0.GMULJc2oab5-iAhxiM7IIL9jr169hwX4m9MU3WiWuBI
-SUPABASE_BUCKET_NAME=your-bucket-name
+
 ```
 
 ### Frontend Environment Variables
@@ -408,7 +404,8 @@ docker-compose up -d --build backend
 1. Clone the repository
 2. Set up environment variables in both backend and frontend
 3. Run `docker-compose up -d --build`
-4. Access the application at http://localhost:3000
-5. API is available at http://localhost:5000/api/apartments
+4. Run `docker-compose exec backend npx ts-node src/seeds/populate-apartments.ts` to populate mongoDB
+5. Access the application at http://localhost:3000
+6. API is available at http://localhost:5000/api/apartments
 
 The application should now be running with a complete apartment listing system including image upload, search functionality, and responsive design.
